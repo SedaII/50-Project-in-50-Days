@@ -28,6 +28,40 @@ prev.addEventListener('click', () => {
 
 })
 
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft' && !e.shiftKey) {
+    currentActive--
+
+    if(currentActive < 1){
+      currentActive = 1
+    }
+
+    update()
+
+  } else if (e.key === 'ArrowRight' && !e.shiftKey) {
+    currentActive++
+
+    if(currentActive > circles.length){
+      currentActive = circles.length
+    }
+
+    update()
+
+  } else if(e.key === 'ArrowLeft' && e.shiftKey) {
+
+    currentActive = 1
+    update()
+
+  }
+
+  else if (e.key === 'ArrowRight' && e.shiftKey) {
+
+    currentActive = 4
+    update()
+
+  }
+})
+
 function update() {
   circles.forEach((circle, idx) =>{
     if(idx < currentActive) {
