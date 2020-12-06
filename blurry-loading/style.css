@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0px;
+}
+
+.bg {
+  background: url('https://parcdelacitadelle.lille.fr/sites/default/files/styles/full/public/thumbnails/image/p-01.premiere_enceintecphilippe_frutier.jpg?itok=SweekwvY') no-repeat center center/cover;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: calc(100vw + 40px);
+  height: calc(100vh + 40px);
+  z-index: -1;
+  filter: blur(20px);
+}
+
+.loading-text {
+  font-size: 50px;
+  color: #000;
+}
