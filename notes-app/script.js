@@ -24,6 +24,7 @@ const addNewNote = (text = '') => {
   
   deleteBtn.addEventListener('click', () => {
     note.remove()
+    updateLS()
   })
   
   editBtn.addEventListener('click', () => {
@@ -31,7 +32,35 @@ const addNewNote = (text = '') => {
     textArea.classList.toggle('hidden')
   })
   
+  textArea.addEventListener('input', (e) => {
+    const { value } = e.target
+    
+    main.innerHTML = marked(value)
+    
+    updateLS()
+  })
+  
   document.body.appendChild(note)
+}
+
+const updateLS = () => {
+  const notesText = document.querySelectorAll('textarea')
+  
+  const notes = []
+  
+  notesText.forEach(note => {
+    notes.push(note.value)
+  })
+  
+  localStorage.setItem('notes', JSON.stringify(notes))
+}
+
+const notes = JSON.parse(localStorage.getItem('notes'))
+
+if(notes) {
+  notes.forEach( note => {
+    addNewNote(note)
+  })
 }
 
 addBtn.addEventListener('click', () => addNewNote())
